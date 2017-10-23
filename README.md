@@ -1,4 +1,4 @@
-# AnDiFront V2.0
+# AnDiFrontend V2.0
 
 > Web Frontend pages
 
