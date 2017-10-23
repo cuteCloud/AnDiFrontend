@@ -2,6 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
     3
+    1
     <router-view/>
   </div>
 </template>
