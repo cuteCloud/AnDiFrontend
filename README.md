@@ -1,6 +1,6 @@
 # AnDiFrontend V2.0
 
-> Web Frontend pages Dev1
+> Web Frontend pages Dev2
 
 ## Build Setup
 
