@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <mtest></mtest>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -21,8 +22,12 @@
 </template>
 
 <script>
+import mtest from './../components/test/test'
 export default {
   name: 'HelloWorld',
+  components:{
+    mtest
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
