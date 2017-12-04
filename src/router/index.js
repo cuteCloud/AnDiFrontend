@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+/*import HelloWorld from '@/components/HelloWorld'*/
 
 Vue.use(Router)
 const leftNav= resolve=> {
-  require(['../components/leftNav/leftNav.vue'], resolve)
+  require(['../components/leftMenu/leftMenu.vue'], resolve)
 };
-const topNav= resolve=> {
-  require(['../components/topNav/topNav.vue'], resolve)
+const home= resolve=> {
+  require(['../components/home/home.vue'], resolve)
 };
-const BO_course= resolve=> {
+const headerNav= resolve=> {
+  require(['../components/headerNav/headerNav.vue'], resolve)
+};
+const BO_courseToday= resolve=> {
   require(['../components/rightDetail/businessOperation/course/courseToday.vue'], resolve)
 };
 const BO_addCourse= resolve=> {
@@ -20,10 +23,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'bumen',
-      component: bumen
+      name: 'home',
+      component: home,
+      children:[
+        {
+          path: '/courseToday',
+          name: 'courseToday',
+          component: BO_courseToday
+        },
+        {
+          path: '/addCourse',
+          name: 'addCourse',
+          component: BO_addCourse
+        }
+      ]
     },
-    {
+   /* {
       path: '/bumen',
       name: 'bumen',
       component: bumen,
@@ -39,11 +54,11 @@ export default new Router({
           component: tianjia
         }
       ]
-    },
-    {
+    },*/
+    /*{
       path: '/caozuo',
       name: 'caozuo',
       component: caozuo
-    }
+    }*/
   ]
 })
