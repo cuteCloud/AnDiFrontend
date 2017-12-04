@@ -4,7 +4,7 @@
     <div class="leftNav">
       <left-menu></left-menu>
     </div>
-    <div class="content">
+    <div class="content" :style="">
       <router-view></router-view>
     </div>
   </div>
@@ -14,7 +14,9 @@
   import leftMenu from '../leftMenu/leftMenu'
   export default{
       data(){
-          return{}
+          return{
+          	
+          }
       },
     components:{'header-nav':headerNav,'left-menu':leftMenu},
     create:function () {
@@ -33,16 +35,14 @@
   .leftNav{
     height:-webkit-calc(100% - 100px); height: calc(100% - 100px);
     width: 120px;
+    float:left;
     background-color: #00a0e9;
     position: relative;
     z-index: 100;
 
   }
   .content{
-    position: absolute;
-    left: 120px;
-    right: 0;
-    top: 100px;
+   margin-left: 120px;
     height:-webkit-calc(100% - 100px); height: calc(100% - 100px);
     background-color: darkgrey;
   }

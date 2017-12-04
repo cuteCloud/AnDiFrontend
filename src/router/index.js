@@ -18,6 +18,9 @@ const BO_courseToday= resolve=> {
 const BO_addCourse= resolve=> {
   require(['../components/rightDetail/businessOperation/course/addCourse.vue'], resolve)
 };
+const BO_memberBusiness= resolve=> {
+  require(['../components/rightDetail/businessOperation/member/memberBusiness.vue'], resolve)
+};
 export default new Router({
   mode:'history',
   routes: [
@@ -35,6 +38,11 @@ export default new Router({
           path: '/addCourse',
           name: 'addCourse',
           component: BO_addCourse
+        },
+         {
+          path: '/memberBusiness',
+          name: 'memberBusiness',
+          component: BO_memberBusiness
         }
       ]
     },
