@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AnDiFrontend V2.0
 
 > Web Frontend pages Dev2 wuhao modify
@@ -19,4 +20,7 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
+=======
+# AnDiFrontend
+1 for test
+>>>>>>> 768e0c35521c264927386a46d1ddbd16b04f278d

@@ -1,7 +1,7 @@
 <template>
     <div>
       <ul>
-        <li v-for="leftMeun in leftMenus"><router-link to="/courseToday">guanli</router-link></li>
+        <li v-for="(leftMenu,index) in leftMenus" :class="index==leftStatus?'active':''"><router-link to="" @click.native="changeContent(leftMenu.path,index)">{{leftMenu.name}}</router-link></li>
        <!-- <li><router-link to="/addCourse">tianjia</router-link></li>-->
       </ul>
     </div>
@@ -10,14 +10,34 @@
   export default{
     data(){
       return{
-        navs:[{businessOperation:[{path:'/courseToday',name:'课程列表'},{path:'/memberList',name:'会员列表'}],name:'业务操作'},
+        navs:[{businessOperation:[{path:'/courseToday',name:'课程列表'},{path:'/memberBusiness',name:'会员业务'}],name:'业务操作'},
           {companyManage:[{path:'/companySet',name:'公司设置'},{path:'/departmentSet',name:'部门设置'}],name:"公司管理"},
           {informationManage:[{path:'/packageMange',name:'套餐管理'},{path:'/activeMange',name:'活动管理'},{path:'/courseMange',name:'课程管理'}],name:"信息管理"}] ,
-        leftMenus:[]
+        leftMenus:[],
+        leftStatus:0
       }
     },
+     mounted: function () {
+     this.leftMenus=this.navs[0].businessOperation;
+			console.log(this.leftMenus)
+    },
     create:function () {
-
+		
+    },
+    methods:{
+    	changeContent(path,index){
+    		 this.$router.push({ path: path});
+    		 this.leftStatus=index
+    	}
     }
   }
 </script>
+<style scoped>
+	a{
+		color: #ffffff;
+		text-decoration: none;
+	}
+	ul li.active a{
+		color: #ff0000;
+	}
+</style>
