@@ -21,6 +21,12 @@ const BO_addCourse= resolve=> {
 const BO_memberBusiness= resolve=> {
   require(['../components/rightDetail/businessOperation/member/memberBusiness.vue'], resolve)
 };
+const CM_companySet= resolve=> {
+  require(['../components/rightDetail/companyManage/companySet/companySet.vue'], resolve)
+};
+const CM_departmentSet= resolve=> {
+  require(['../components/rightDetail/companyManage/departmentSet/departmentSet.vue'], resolve)
+};
 export default new Router({
   mode:'history',
   routes: [
@@ -43,6 +49,16 @@ export default new Router({
           path: '/memberBusiness',
           name: 'memberBusiness',
           component: BO_memberBusiness
+        },
+        {
+          path: '/companySet',
+          name: 'companySet',
+          component: CM_companySet
+        },
+        {
+          path: '/companyManage/departmentSet',
+          name: 'departmentSet',
+          component: CM_departmentSet
         }
       ]
     },

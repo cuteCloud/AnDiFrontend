@@ -5,7 +5,10 @@
       <left-menu></left-menu>
     </div>
     <div class="content" :style="">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+
     </div>
   </div>
 </template>
@@ -15,7 +18,7 @@
   export default{
       data(){
           return{
-          	
+
           }
       },
     components:{'header-nav':headerNav,'left-menu':leftMenu},
