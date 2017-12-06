@@ -29,10 +29,19 @@ const CM_departmentSet= resolve=> {
 };
 export default new Router({
   mode:'history',
+  linkActiveClass: 'active',
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
       path: '/',
+      redirect: '/businessOperation',
       name: 'home',
+      component: home
+    },
+    {
+      path: '/businessOperation',
+      name: 'businessOperation',
+      redirect: '/courseToday',
       component: home,
       children:[
         {
@@ -45,11 +54,19 @@ export default new Router({
           name: 'addCourse',
           component: BO_addCourse
         },
-         {
+        {
           path: '/memberBusiness',
           name: 'memberBusiness',
           component: BO_memberBusiness
-        },
+        }
+      ]
+    },
+    {
+      path: '/companyManage',
+      name: 'companyManage',
+      redirect: '/companySet',
+      component: home,
+      children:[
         {
           path: '/companySet',
           name: 'companySet',
@@ -61,7 +78,7 @@ export default new Router({
           component: CM_departmentSet
         }
       ]
-    },
+    }
    /* {
       path: '/bumen',
       name: 'bumen',

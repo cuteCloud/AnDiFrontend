@@ -5,9 +5,6 @@
 
       </div>
       <div style="width: 200px;height: 100px;float: right">
-       <!-- <router-link to="/businessOperation">业务操作</router-link>
-        <router-link to="/informationManage">信息管理</router-link>
-        <router-link to="/companyManage">信息管理</router-link>-->
         <router-link v-for="(nav,index) in navs" :key="nav.id" to="" @click.native="linkChange(nav.path,nav.id)">{{nav.name}}</router-link>
       </div>
     </div>
@@ -34,7 +31,7 @@
           default :this.$store.commit('setLeftMenusList', this.navs[0].businessOperation);
         }
         this.$router.push({ path: path});
-        this.$store.commit('setLeftMenusStatus', 0);
+        /*this.$store.commit('setLeftMenusStatus', 0);*/
 
 
       }
