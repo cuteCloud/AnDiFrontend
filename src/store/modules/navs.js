@@ -1,12 +1,12 @@
 import g from '../../commonJs/g'
 var navs = {
   state: {
-    navs:g.tempCache.get('leftMenuStatus')
+    navStatus:g.tempCache.get('navStatus')
   },
   mutations: {
-    setLeftMenuStatus(state, info) {
-      state.navs=info;
-      g.tempCache.set('navs', info);
+    setNavStatus(state, info) {
+      state.navStatus=info;
+      g.tempCache.set('navStatus', info);
     }
   }
 }

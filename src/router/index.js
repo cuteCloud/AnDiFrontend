@@ -40,41 +40,41 @@ export default new Router({
     },
     {
       path: '/businessOperation',
-      name: 'businessOperation',
+      name: '业务操作',
       redirect: '/courseToday',
       component: home,
       children:[
         {
           path: '/courseToday',
-          name: 'courseToday',
+          name: '今日课程',
           component: BO_courseToday
         },
         {
           path: '/addCourse',
-          name: 'addCourse',
+          name: '添加课程',
           component: BO_addCourse
         },
         {
           path: '/memberBusiness',
-          name: 'memberBusiness',
+          name: '会员业务',
           component: BO_memberBusiness
         }
       ]
     },
     {
       path: '/companyManage',
-      name: 'companyManage',
-      redirect: '/companySet',
+      name: '公司管理',
+      redirect: '/companyManage/companySet',
       component: home,
       children:[
         {
-          path: '/companySet',
-          name: 'companySet',
+          path: '/companyManage/companySet',
+          name: '公司设置',
           component: CM_companySet
         },
         {
           path: '/companyManage/departmentSet',
-          name: 'departmentSet',
+          name: '部门设置',
           component: CM_departmentSet
         }
       ]

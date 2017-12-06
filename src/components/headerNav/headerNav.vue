@@ -1,11 +1,14 @@
 <template>
-  <div id="header">
+  <div class="header">
     <div style="width: 100%;height: 100px;overflow: hidden;background-color: saddlebrown">
       <div style="width: 200px;height: 100px;float: left">
 
       </div>
       <div style="width: 200px;height: 100px;float: right">
-        <router-link v-for="(nav,index) in navs" :key="nav.id" to="" @click.native="linkChange(nav.path,nav.id)">{{nav.name}}</router-link>
+      	<ul>
+      		<li v-for="(nav,index) in navs" :class="cur_nav==nav.path?'active':''"  @click="switchNav(nav.path)">{{nav.name}}</li>
+      	</ul>
+       <!-- <router-link  :key="nav.id" :to="nav.path" @click>{{nav.name}}</router-link>-->
       </div>
     </div>
   </div>
@@ -14,27 +17,42 @@
   export default{
     data(){
       return{
-        navs:[{businessOperation:[{path:'/courseToday',name:'课程列表'},{path:'/memberBusiness',name:'会员列表'}],name:'业务操作',path:'/courseToday',id:1},
-          {id:2,companyManage:[{path:'/companySet',name:'公司设置'},{path:'/companyManage/departmentSet',name:'部门设置'}],name:"公司管理",path:'/companySet'},
+        navs:[{businessOperation:[{path:'/courseToday',name:'课程列表'},{path:'/memberBusiness',name:'会员列表'}],name:'业务操作',path:'/businessOperation',id:1},
+          {id:2,companyManage:[{path:'/companyManage/companySet',name:'公司设置'},{path:'/companyManage/departmentSet',name:'部门设置'}],name:"公司管理",path:'/companyManage'},
           {id:3,informationManage:[{path:'/packageMange',name:'套餐管理'},{path:'/activeMange',name:'活动管理'},{path:'/courseMange',name:'课程管理'}],name:"信息管理",path:'/courseAToday'}] ,
       }
     },
     created:function () {
-      /*this.$store.commit('setLeftMenusList', this.navs[0].businessOperation)*/
+     
     },
     methods:{
-      linkChange:function (path,id) {
-        switch (id){
-          case 1: this.$store.commit('setLeftMenusList', this.navs[0].businessOperation);break;
-          case 2: this.$store.commit('setLeftMenusList', this.navs[1].companyManage);break;
-          case 3: this.$store.commit('setLeftMenusList', this.navs[2].informationManage);break;
-          default :this.$store.commit('setLeftMenusList', this.navs[0].businessOperation);
-        }
+      switchNav:function (path) {
+        this.$store.commit('setNavStatus', path);
         this.$router.push({ path: path});
-        /*this.$store.commit('setLeftMenusStatus', 0);*/
-
-
       }
-    }
+    },
+     computed: {
+      cur_nav: function () {
+          return this.$store.state.navs.navStatus
+      }
+    },
   }
 </script>
+<style scoped="">
+	.header a{
+		text-decoration: none;
+		color: #ffffff;
+	}
+	.header a.active{
+		color: #ff0000;
+	}
+	ul li{
+		list-style: none;
+		float:left;
+		color: #ffffff;
+		cursor: pointer;
+	}
+		ul li.active{
+			color: #ff0000;
+		}
+</style>
