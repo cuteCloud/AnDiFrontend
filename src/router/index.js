@@ -12,6 +12,12 @@ const home= resolve=> {
 const headerNav= resolve=> {
   require(['../components/headerNav/headerNav.vue'], resolve)
 };
+const login= resolve=> {
+  require(['../components/login/login.vue'], resolve)
+};
+const notFound= resolve=> {
+  require(['../components/404.vue'], resolve)
+};
 const BO_courseToday= resolve=> {
   require(['../components/rightDetail/businessOperation/course/courseToday.vue'], resolve)
 };
@@ -27,6 +33,7 @@ const CM_companySet= resolve=> {
 const CM_departmentSet= resolve=> {
   require(['../components/rightDetail/companyManage/departmentSet/departmentSet.vue'], resolve)
 };
+
 export default new Router({
   mode:'history',
   linkActiveClass: 'active',
@@ -34,30 +41,33 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/businessOperation',
-      name: 'home',
-      component: home
+      name: '登陆',
+      component: login
     },
     {
       path: '/businessOperation',
       name: '业务操作',
       redirect: '/courseToday',
       component: home,
+      meta: { role: ['admin'] },
       children:[
         {
           path: '/courseToday',
           name: '今日课程',
-          component: BO_courseToday
+          component: BO_courseToday,
+          meta: { role: ['admin'] }
         },
         {
           path: '/addCourse',
           name: '添加课程',
-          component: BO_addCourse
+          component: BO_addCourse,
+          meta: { role: ['admin'] }
         },
         {
           path: '/memberBusiness',
           name: '会员业务',
-          component: BO_memberBusiness
+          component: BO_memberBusiness,
+          meta: { role: ['admin'] }
         }
       ]
     },
@@ -66,40 +76,49 @@ export default new Router({
       name: '公司管理',
       redirect: '/companyManage/companySet',
       component: home,
+      meta: { role: ['admin'] },
       children:[
         {
           path: '/companyManage/companySet',
           name: '公司设置',
-          component: CM_companySet
+          component: CM_companySet,
+          meta: { role: ['admin'] }
         },
         {
           path: '/companyManage/departmentSet',
           name: '部门设置',
-          component: CM_departmentSet
+          component: CM_departmentSet,
+          meta: { role: ['admin'] }
         }
       ]
-    }
-   /* {
-      path: '/bumen',
-      name: 'bumen',
-      component: bumen,
-      children: [
-        {
-          path: 'guanli',
-          name:'guanli',
-          component: guanli
-        },
-        {
-          path: 'tianjia',
-          name:'tianjia',
-          component: tianjia
-        }
-      ]
-    },*/
+    },
+    {
+      path: '/404',
+      name: 'notFound',
+      component: notFound,
+    },
+    { path: '*', redirect: '/404'}
+    /* {
+     path: '/bumen',
+     name: 'bumen',
+     component: bumen,
+     children: [
+     {
+     path: 'guanli',
+     name:'guanli',
+     component: guanli
+     },
+     {
+     path: 'tianjia',
+     name:'tianjia',
+     component: tianjia
+     }
+     ]
+     },*/
     /*{
-      path: '/caozuo',
-      name: 'caozuo',
-      component: caozuo
-    }*/
+     path: '/caozuo',
+     name: 'caozuo',
+     component: caozuo
+     }*/
   ]
 })
