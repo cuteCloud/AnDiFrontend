@@ -58,7 +58,6 @@
         }
       },
       updateLeftMenus(){
-
           console.log("23232",this.$route)
       }
     },
