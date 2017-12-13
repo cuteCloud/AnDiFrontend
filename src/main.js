@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import axios from 'axios'
+import axios from './index'
 import store from './store/index'
 /*import routersTable from './router/routers'*/
 Vue.config.productionTip = false
@@ -100,3 +100,20 @@ new Vue({
 ]
 
 router.addRoutes(rout)*/
+router.beforeEach((to, from, next) => {
+  console.log("全局",to)
+  if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
+    if (store.state.user.token) {  // 通过vuex state获取当前的token是否存在
+      next();
+    }
+    else {
+      next({
+        path: '/login',
+        query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+      })
+    }
+  }
+  else {
+    next()
+  }
+})
