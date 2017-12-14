@@ -41,6 +41,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/Login',
+
+    },
+    { path: '/Login',
       name: '登陆',
       component: login
     },
@@ -49,25 +53,25 @@ export default new Router({
       name: '业务操作',
       redirect: '/courseToday',
       component: home,
-      meta: { role: ['admin'] },
+      meta: { requireAuth: true },
       children:[
         {
           path: '/courseToday',
           name: '今日课程',
           component: BO_courseToday,
-          meta: { role: ['admin'] }
+          meta: { requireAuth: true }
         },
         {
           path: '/addCourse',
           name: '添加课程',
           component: BO_addCourse,
-          meta: { role: ['admin'] }
+          meta: { requireAuth: true }
         },
         {
           path: '/memberBusiness',
           name: '会员业务',
           component: BO_memberBusiness,
-          meta: { role: ['admin'] }
+          meta: { requireAuth: true }
         }
       ]
     },
@@ -76,19 +80,19 @@ export default new Router({
       name: '公司管理',
       redirect: '/companyManage/companySet',
       component: home,
-      meta: { role: ['admin'] },
+      meta: { requireAuth: true },
       children:[
         {
           path: '/companyManage/companySet',
           name: '公司设置',
           component: CM_companySet,
-          meta: { role: ['admin'] }
+          meta: { requireAuth: true }
         },
         {
           path: '/companyManage/departmentSet',
           name: '部门设置',
           component: CM_departmentSet,
-          meta: { role: ['admin'] }
+          meta: { requireAuth: true }
         }
       ]
     },

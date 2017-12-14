@@ -11,6 +11,10 @@ html,body,#app{
 .login{
   color: #ff0000;
 }
+a{
+  text-decoration: none;
+  color: #ffffff;
+}
 input{
   background-color: transparent;
   border: 1px solid #f4f4f4;

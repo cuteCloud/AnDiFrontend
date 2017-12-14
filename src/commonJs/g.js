@@ -43,7 +43,7 @@ var g= {
           var strsec = this.getsec(time);
           var exp = new Date();
           exp.setTime(exp.getTime() + strsec*1);
-          document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+          document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+'path=/';
         },
         get:function (name) {
           var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
@@ -53,11 +53,14 @@ var g= {
             return null;
         },
         cancel:function (name) {
+          console.log(document.cookie)
           var exp = new Date();
+          console.log(exp.getTime())
           exp.setTime(exp.getTime() - 1);
           var cval=this.get(name);
+          console.log(name)
           if(cval!=null)
-            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+            document.cookie= name + "="+escape(cval)+";expires="+exp.toGMTString()+'path=/';
         },
         getsec:function (str) {
           var str1=str.substring(1,str.length)*1;

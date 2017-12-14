@@ -28,6 +28,7 @@
   }
 </script>
 <style>
+  @import '../../assets/css/global.css';
   body,html,#app,.home{
     width: 100%;
     height: 100%;
@@ -36,17 +37,19 @@
     min-width: 1200px;
   }
   .leftNav{
-    height:-webkit-calc(100% - 100px); height: calc(100% - 100px);
-    width: 120px;
+    height:-webkit-calc(100% - 60px); height: calc(100% - 60px);
+    width: 190px;
     float:left;
-    background-color: #00a0e9;
+    background-color: #3D3D3D;
     position: relative;
-    z-index: 100;
+    z-index: 10;
 
   }
   .content{
-   margin-left: 120px;
-    height:-webkit-calc(100% - 100px); height: calc(100% - 100px);
-    background-color: darkgrey;
+    position: relative;
+    z-index: 10;
+    margin-left: 190px;
+    height:-webkit-calc(100% - 60px); height: calc(100% - 60px);
+    background-color: #ffffff;
   }
 </style>
